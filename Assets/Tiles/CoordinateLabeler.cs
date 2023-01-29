@@ -17,7 +17,7 @@ public class CoordinateLabeler : MonoBehaviour
         label = GetComponent<TextMeshPro>();
         DisplayCoordinates(); // show coordinates even before the game starts
         label.enabled = true; // show coordinates setting it as enabled (false you wouldn't see it)
-        waypoint = GetComponentInParent<Waypoint>(); // getting the Waypoint component (that is, the class Waypoint in another script)
+        waypoint = GetComponentInParent<Waypoint>(); // getting a Waypoint class component (get a component *isPlaceable* in parent *Waypoint Class*)
     }
 
     // Update is called once per frame
