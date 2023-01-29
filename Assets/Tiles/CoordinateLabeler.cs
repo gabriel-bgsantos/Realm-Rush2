@@ -11,7 +11,7 @@ public class CoordinateLabeler : MonoBehaviour
 
     TextMeshPro label;
     Vector2Int coordinates = new Vector2Int();
-    Waypoint waypoint;
+    Waypoint waypoint; // creating an object waypoint form the class Waypoint
 
     private void Awake() {
         label = GetComponent<TextMeshPro>();
