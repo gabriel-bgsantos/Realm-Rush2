@@ -25,7 +25,7 @@ public class EnemyMover : MonoBehaviour
 
             while(travelPercent < 1f) {
                 travelPercent += Time.deltaTime * speed;
-                Debug.Log(travelPercent);
+                // Debug.Log(travelPercent);
                 transform.position = Vector3.Lerp(startPosition, endPosition, travelPercent); // travelPercent goes from 0 to 1, being 0 the startPos and 1 the endPos
                 yield return new WaitForEndOfFrame(); //wait till the end of the frame (isn't it obvious?)
             }
