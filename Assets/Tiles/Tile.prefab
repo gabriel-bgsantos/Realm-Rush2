@@ -47,8 +47,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffa222909aa63ea40b0f958ad34320a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isPlaceable: 1
   towerPrefab: {fileID: 3219458064393657486, guid: 8a965e088bae16643aab3d07ccfd5e2e, type: 3}
+  isPlaceable: 1
 --- !u!65 &6922698339262397256
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -156,7 +156,7 @@ GameObject:
   - component: {fileID: 2502068983611322}
   - component: {fileID: 3011162931378020148}
   - component: {fileID: 3661239625765829254}
-  - component: {fileID: 4231694418341362936}
+  - component: {fileID: 8511113278285636008}
   m_Layer: 0
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -233,7 +233,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8512205355582805801}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9541d86e2fd84c1d9990edf0852d74ab, type: 3}
   m_Name: 
@@ -256,7 +256,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4293060386
-  m_fontColor: {r: 0.13333334, g: 0.90588236, b: 0.88450396, a: 1}
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -318,7 +318,7 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_renderer: {fileID: 3011162931378020148}
   m_maskType: 0
---- !u!114 &4231694418341362936
+--- !u!114 &8511113278285636008
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -330,3 +330,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbfa935cfd82eb94aa5a87cb1dc34108, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  defaultColor: {r: 1, g: 1, b: 1, a: 1}
+  blockedColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
