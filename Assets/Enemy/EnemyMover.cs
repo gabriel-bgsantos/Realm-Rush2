@@ -10,8 +10,30 @@ public class EnemyMover : MonoBehaviour
 
     void Start()
     {
+        FindPath();
+        // ReturnToStart();
         StartCoroutine(FollowPath());
     }
+
+
+    void FindPath() {
+        // GameObject[] waypoints = GameObject.findGameObjectsWithTag("Path");
+
+        // foreach(GameObject waypoint in waypoints) {}
+        // path.Add(waypoint.GetComponent<Waypoint>());
+        // }
+
+        path.Clear();
+        GameObject parent = GameObject.FindGameObjectWithTag("Path");
+        
+        foreach(Transform child in parent.transform) {
+            path.Add(child.GetComponent<Waypoint>());
+        }
+    }
+
+    // void ReturnToStart() {
+    //     transform.position = path[0].transform.position; <------ this method is used if the first commented lines of FindPath() is used (so it can start in the right position)
+    // }
 
     IEnumerator FollowPath () {
         foreach (Waypoint way in path) {
@@ -33,5 +55,7 @@ public class EnemyMover : MonoBehaviour
             // transform.position = way.transform.position;
             // yield return new WaitForSeconds(waitTime);
         }
+
+        Destroy(gameObject);
     }
 }
