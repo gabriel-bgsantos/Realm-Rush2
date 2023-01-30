@@ -8,7 +8,7 @@ public class EnemyHealth : MonoBehaviour
     [SerializeField] int currentHitPoints = 0;
 
     // Start is called before the first frame update
-    void Start()
+    void OnEnable() // OnEnable because each time the gameObject is activated again, it restarts fresh (from the startPos, full health, etc)
     {
         currentHitPoints = maxHitPoints;
     }
@@ -26,7 +26,7 @@ public class EnemyHealth : MonoBehaviour
     private void KillEnemy() {
         currentHitPoints--;
         if(currentHitPoints < 1) {
-            Destroy(gameObject);
+            gameObject.SetActive(false);
         }
     }
 }

@@ -8,10 +8,10 @@ public class EnemyMover : MonoBehaviour
     [SerializeField] [Range(0f, 5f)] float speed = 1f;
     //[SerializeField] float waitTime = 1f;
 
-    void Start()
+    void OnEnable() // OnEnable because each time the gameObject is activated again, it restarts fresh (from the startPos, full health, etc)
     {
         FindPath();
-        // ReturnToStart();
+        ReturnToStart();
         StartCoroutine(FollowPath());
     }
 
@@ -31,9 +31,9 @@ public class EnemyMover : MonoBehaviour
         }
     }
 
-    // void ReturnToStart() {
-    //     transform.position = path[0].transform.position; <------ this method is used if the first commented lines of FindPath() is used (so it can start in the right position)
-    // }
+    void ReturnToStart() {
+        transform.position = path[0].transform.position; 
+    }
 
     IEnumerator FollowPath () {
         foreach (Waypoint way in path) {
@@ -56,6 +56,6 @@ public class EnemyMover : MonoBehaviour
             // yield return new WaitForSeconds(waitTime);
         }
 
-        Destroy(gameObject);
+        gameObject.SetActive(false);
     }
 }
