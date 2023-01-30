@@ -23,9 +23,8 @@ public class EnemyMover : MonoBehaviour
         // path.Add(waypoint.GetComponent<Waypoint>());
         // }
 
-        path.Clear();
-        GameObject parent = GameObject.FindGameObjectWithTag("Path");
-        
+        path.Clear(); // without it th path enemy list would become a problem
+        GameObject parent = GameObject.FindGameObjectWithTag("Path");    
         foreach(Transform child in parent.transform) {
             path.Add(child.GetComponent<Waypoint>());
         }
@@ -36,11 +35,11 @@ public class EnemyMover : MonoBehaviour
     }
 
     IEnumerator FollowPath () {
-        foreach (Waypoint way in path) {
-            Debug.Log(way.name);
+        foreach (Waypoint waypoint in path) {
+            Debug.Log(waypoint.name);
             
             Vector3 startPosition = transform.position;
-            Vector3 endPosition = way.transform.position;
+            Vector3 endPosition = waypoint.transform.position;
             float travelPercent = 0f;
 
             transform.LookAt(endPosition); // face the end position

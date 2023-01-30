@@ -21,7 +21,7 @@ public class targetLocator : MonoBehaviour
         float maxDistance = Mathf.Infinity;
 
         foreach(Enemy enemy in enemies) {
-            float targetDistance = Vector3.Distance(transform.position, enemy.transform.position);
+            float targetDistance = Vector3.Distance(transform.position, enemy.transform.position); // distance between the tower and the enemy
             if(targetDistance < maxDistance) {
                 closestTarget = enemy.transform;
                 maxDistance = targetDistance;

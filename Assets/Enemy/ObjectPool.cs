@@ -19,14 +19,7 @@ public class ObjectPool : MonoBehaviour
         StartCoroutine(SpawnEnemy());
     }
 
-    IEnumerator SpawnEnemy() {
-        while(true) {
-            EnableObjectInPool();
-            yield return new WaitForSeconds(spawnTimer);
-        }
-    }
-
-    void PopulatePool() {
+    void PopulatePool() { // working with Object Pool, just getting all the objects needed in there / waiting deactivated
         pool = new GameObject[poolSize];
 
         for(int i = 0; i < pool.Length; i++) {
@@ -35,7 +28,14 @@ public class ObjectPool : MonoBehaviour
         }
     }
 
-    void EnableObjectInPool() { // see if there's any element deactivated, if yes, activate it
+    IEnumerator SpawnEnemy() {
+        while(true) {
+            EnableObjectInPool();
+            yield return new WaitForSeconds(spawnTimer);
+        }
+    }
+
+    void EnableObjectInPool() { // see if there's any element deactivated, if yes, activate it (all those objects sleeping will be activated)
         for(int i = 0; i < pool.Length; i++) {
             if(pool[i].activeInHierarchy == false) {
                 pool[i].SetActive(true);
