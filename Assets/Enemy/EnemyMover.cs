@@ -8,6 +8,12 @@ public class EnemyMover : MonoBehaviour
     [SerializeField] [Range(0f, 5f)] float speed = 1f;
     //[SerializeField] float waitTime = 1f;
 
+    Enemy enemy;
+
+    private void Start() {
+        enemy = GetComponent<Enemy>();    
+    }
+
     void OnEnable() // OnEnable because each time the gameObject is activated again, it restarts fresh (from the startPos, full health, etc)
     {
         FindPath();
@@ -56,5 +62,6 @@ public class EnemyMover : MonoBehaviour
         }
 
         gameObject.SetActive(false);
+        enemy.StealGold();
     }
 }
