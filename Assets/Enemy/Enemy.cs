@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    [SerializeField] int goldReward = 25; // this could be made with only 1 variable, but it was split to benefit the designer's life
-    [SerializeField] int goldPenalty = 25;
+    [SerializeField] int goldReward = 25; 
 
     Bank bank;
 
