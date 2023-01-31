@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Enemy))] //it ensures that the required component we specified (Enemy) also gets attached to the gameObject this script (EnemyHealth) is attached
 public class EnemyMover : MonoBehaviour
 {
     [SerializeField] List<Waypoint> path = new List<Waypoint>();
