@@ -11,7 +11,7 @@ public class Enemy : MonoBehaviour
 
     void Start()
     {
-        bank = FindObjectsOfType<Bank>();
+        bank = FindObjectOfType<Bank>();
     }
 
     public void RewardGold() {
