@@ -71,5 +71,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.y
       value: 270
       objectReference: {fileID: 0}
+    - target: {fileID: 6183711466507121264, guid: 187dfeb499e7a364ba5d14b650f69259, type: 3}
+      propertyPath: m_text
+      value: 40,0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6183711466507121264, guid: 187dfeb499e7a364ba5d14b650f69259, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6183711466507121264, guid: 187dfeb499e7a364ba5d14b650f69259, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 187dfeb499e7a364ba5d14b650f69259, type: 3}

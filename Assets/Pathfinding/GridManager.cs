@@ -7,9 +7,18 @@ public class GridManager : MonoBehaviour
     [SerializeField] Vector2Int gridSize;
 
     Dictionary<Vector2Int, Node> grid = new Dictionary<Vector2Int, Node>();
+    public Dictionary<Vector2Int, Node> Grid { get { return grid; } } // access to all grids saved in the dictionary (all the keys and its values)
 
     private void Awake() {
         CreateGrid();
+    }
+
+    public Node GetNode(Vector2Int coordinates) { // didn't use a property to get the return because we don't want the entire grid, just a specified node within the dictionary
+        if(grid.ContainsKey(coordinates)){
+            return grid[coordinates];
+        }
+
+        return null;
     }
 
     private void CreateGrid() {
@@ -17,7 +26,7 @@ public class GridManager : MonoBehaviour
             for(int y = 0; y < gridSize.y; y++) {
                 Vector2Int coordinates = new Vector2Int(x,y);
                 grid.Add(coordinates, new Node(coordinates, true)); // key + value
-                Debug.Log(grid[coordinates].coordinates + " = " + grid[coordinates].isWalkable); // [coordinates] is the key that contains the Node Class Parameters (coordinates and isWalkable) as its values
+                //Debug.Log(grid[coordinates].coordinates + " = " + grid[coordinates].isWalkable); // [coordinates] is the key that contains the Node Class Parameters (coordinates and isWalkable) as its values
             }
         }
     }
