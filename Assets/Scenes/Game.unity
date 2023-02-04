@@ -803,11 +803,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e7880d48c709fd48bdb455b84ac44b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentSearchNode:
-    coordinates: {x: 3, y: 1}
-    isWalkable: 0
-    isExplored: 0
-    isPath: 0
+  startCoordinates: {x: 0, y: 0}
+  destinationCoordinates: {x: 3, y: 2}
 --- !u!4 &568011154 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5130781487414310678, guid: 2c63c48153fee9645a3bcc4df4d165e8, type: 3}
