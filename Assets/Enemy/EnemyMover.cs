@@ -43,7 +43,7 @@ public class EnemyMover : MonoBehaviour
 
     IEnumerator FollowPath () {
         foreach (Waypoint waypoint in path) {
-            Debug.Log(waypoint.name);
+            //Debug.Log(waypoint.name);
             
             Vector3 startPosition = transform.position;
             Vector3 endPosition = waypoint.transform.position;

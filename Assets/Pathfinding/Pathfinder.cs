@@ -12,6 +12,7 @@ public class Pathfinder : MonoBehaviour
     Node currentSearchNode;
 
     Queue<Node> frontier = new Queue<Node>(); //FIFO: first in, first out (data structure)
+    Stack<Node> backwardsBreadthPath = new Stack<Node>(); //LIFO: last in, first out (data structure) -> could be using a List here, but just to remember the Stack LIFO thing
     Dictionary<Vector2Int, Node> reached = new Dictionary<Vector2Int, Node>(); // Used to see whether a node was explored already or not
 
     Vector2Int[] directions = { Vector2Int.right, Vector2Int.left, Vector2Int.up, Vector2Int.down };
@@ -23,16 +24,16 @@ public class Pathfinder : MonoBehaviour
         if(gridManager != null) {
             grid = gridManager.Grid;
         }
-
-        startNode = new Node(startCoordinates, true);
-        destinationNode = new Node(destinationCoordinates, true);
     }
 
     void Start()
     {
+        startNode = gridManager.Grid[startCoordinates];
+        destinationNode = gridManager.Grid[destinationCoordinates];
         //ExploreNeighbors();
         BreadthFirstSearch();
-    }
+        BuildPathBackwards();
+    }   
 
     private void ExploreNeighbors() { //finding the neighbors around you
         List<Node> neighbors = new List<Node>(); // empty list of neighbors (based on Nodes)
@@ -47,6 +48,7 @@ public class Pathfinder : MonoBehaviour
         
         foreach(Node neighbor in neighbors) {
             if(!reached.ContainsKey(neighbor.coordinates) && neighbor.isWalkable) {
+                neighbor.connectedTo = currentSearchNode;
                 reached.Add(neighbor.coordinates, neighbor);
                 frontier.Enqueue(neighbor);
             }
@@ -62,10 +64,36 @@ public class Pathfinder : MonoBehaviour
         while(frontier.Count > 0 && isRunning) {
             currentSearchNode = frontier.Dequeue(); // startNode is taken off and then placed as our currentSearchNode
             currentSearchNode.isExplored = true;
+            backwardsBreadthPath.Push(currentSearchNode);
             ExploreNeighbors();
             if(currentSearchNode.coordinates == destinationCoordinates) {
                 isRunning = false;
+                BackwardsPathfinding();
             }
+        }
+    }
+
+    List<Node> BuildPathBackwards() { // method returning a list of Nodes
+        List<Node> path = new List<Node>();
+        Node currentNode = destinationNode;
+
+        path.Add(currentNode);
+        currentNode.isPath = true; // paiting connectedTo paths of all currentNodes we had into orange
+
+        while(currentNode.connectedTo != null) {
+            currentNode = currentNode.connectedTo;
+            path.Add(currentNode);
+            currentNode.isPath = true;
+        }
+
+        path.Reverse();
+        return path;
+    }
+
+    private void BackwardsPathfinding() { // it saves the order of the process of pathfinding
+        while(backwardsBreadthPath.Count > 0) {
+            currentSearchNode = backwardsBreadthPath.Pop();
+            //Debug.Log(currentSearchNode.coordinates);
         }
     }
 }
