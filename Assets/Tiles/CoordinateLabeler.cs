@@ -4,6 +4,7 @@ using UnityEngine;
 using TMPro;
 
 [ExecuteAlways]
+[RequireComponent(typeof(TextMeshPro))]
 public class CoordinateLabeler : MonoBehaviour
 {
     [SerializeField] Color defaultColor = Color.white;
@@ -34,7 +35,7 @@ public class CoordinateLabeler : MonoBehaviour
             UpdateObjectName();
         }
 
-        ColorCoordinates(); // change the color of the text based on if you can place a tower in it or not
+        SetLabelColor(); // change the color of the text based on if you can place a tower in it or not
         ToggleLabels(); // toggle the text(label) view (on/off - enabled/disabled)
     }
 
@@ -50,7 +51,7 @@ public class CoordinateLabeler : MonoBehaviour
         transform.parent.name = coordinates.ToString(); 
     }
 
-    void ColorCoordinates() {
+    void SetLabelColor() {
         if(gridManager == null) { return; } // if did not find out any object GridManager in the Hierarchy
 
         // if the gridManager isn't null, go there and look at our grid Dictionary and find the node for this instance of our coordinate label (the coord for this tile specifically)
@@ -60,7 +61,7 @@ public class CoordinateLabeler : MonoBehaviour
         if(node == null) { return; }
         
         if(!node.isWalkable) {
-            label.color = Color.gray;
+            label.color = blockedColor;
         }
         else if(node.isPath) {
             label.color = pathColor;
@@ -71,13 +72,6 @@ public class CoordinateLabeler : MonoBehaviour
         else {
             label.color = defaultColor;
         }
-
-        // if(waypoint.IsPlaceable) {
-        //     label.color = defaultColor;
-        // }
-        // else{
-        //     label.color = blockedColor;
-        // }
     }
 
     void ToggleLabels() {
