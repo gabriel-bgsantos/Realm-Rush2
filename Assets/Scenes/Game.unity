@@ -774,7 +774,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyPrefab: {fileID: 3114580957763744230, guid: 5db4b9c79748c604fa9979aeb6b5eb63, type: 3}
-  poolSize: 5
+  poolSize: 0
   spawnTimer: 1
 --- !u!4 &509164631
 Transform:
@@ -803,8 +803,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e7880d48c709fd48bdb455b84ac44b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startCoordinates: {x: 3, y: 3}
-  destinationCoordinates: {x: 1, y: 0}
+  startCoordinates: {x: 2, y: 2}
+  destinationCoordinates: {x: 3, y: 0}
 --- !u!4 &568011154 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5130781487414310678, guid: 2c63c48153fee9645a3bcc4df4d165e8, type: 3}
@@ -915,7 +915,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67787092c1a942046b90df6eac5f4f95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridSize: {x: 4, y: 6}
+  gridSize: {x: 10, y: 10}
+  unityGridSize: 10
 --- !u!4 &701322885
 Transform:
   m_ObjectHideFlags: 0

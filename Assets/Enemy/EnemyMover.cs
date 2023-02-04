@@ -5,7 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(Enemy))] //it ensures that the required component we specified (Enemy) also gets attached to the gameObject this script (EnemyHealth) is attached
 public class EnemyMover : MonoBehaviour
 {
-    [SerializeField] List<Waypoint> path = new List<Waypoint>();
+    [SerializeField] List<Tile> path = new List<Tile>();
     [SerializeField] [Range(0f, 5f)] float speed = 1f;
     //[SerializeField] float waitTime = 1f;
 
@@ -33,7 +33,7 @@ public class EnemyMover : MonoBehaviour
         path.Clear(); // without it th path enemy list would become a problem
         GameObject parent = GameObject.FindGameObjectWithTag("Path");    
         foreach(Transform child in parent.transform) {
-            path.Add(child.GetComponent<Waypoint>());
+            path.Add(child.GetComponent<Tile>());
         }
     }
 
@@ -42,7 +42,7 @@ public class EnemyMover : MonoBehaviour
     }
 
     IEnumerator FollowPath () {
-        foreach (Waypoint waypoint in path) {
+        foreach (Tile waypoint in path) {
             //Debug.Log(waypoint.name);
             
             Vector3 startPosition = transform.position;

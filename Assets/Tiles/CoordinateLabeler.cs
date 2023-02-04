@@ -39,8 +39,10 @@ public class CoordinateLabeler : MonoBehaviour
     }
 
     void DisplayCoordinates() { // display the coordinates of each tile based on its position
-        coordinates.x = Mathf.RoundToInt(transform.parent.position.x / UnityEditor.EditorSnapSettings.move.x);
-        coordinates.y = Mathf.RoundToInt(transform.parent.position.z / UnityEditor.EditorSnapSettings.move.z); // x,z plane (3D)
+        if(gridManager == null) { return; }
+
+        coordinates.x = Mathf.RoundToInt(transform.parent.position.x / gridManager.UnityGridSize);
+        coordinates.y = Mathf.RoundToInt(transform.parent.position.z / gridManager.UnityGridSize); // x,z plane (3D)
         label.text = coordinates.x + "," + coordinates.y;
     }
 
@@ -58,7 +60,7 @@ public class CoordinateLabeler : MonoBehaviour
         if(node == null) { return; }
         
         if(!node.isWalkable) {
-            label.color = blockedColor;
+            label.color = Color.gray;
         }
         else if(node.isPath) {
             label.color = pathColor;
